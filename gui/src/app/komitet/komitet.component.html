@@ -1,0 +1,53 @@
+<div class="container-fluid" style="padding-top: 10px" id="komitee_div">
+  <div class="alert alert-light col-md-3 text-center">
+    <button style="position: absolute; top: 5px; left: 5px" mat-button [routerLink]="['/']" class="btn">
+      <mat-icon style="font-size: 1.3rem">home</mat-icon>
+    </button>
+    <h3><strong>{{Komitet.Name}}</strong></h3>
+    <table class="table table-sm">
+      <tr>
+        <td><strong>Leader: </strong></td>
+        <td>{{ Komitet.Przewodniczacy }}</td>
+      </tr>
+      <tr>
+        <td><strong>Vice Leader: </strong></td>
+        <td>{{ Komitet.VPrzewodniczacy }}</td>
+      </tr>
+    </table>
+    <mat-divider></mat-divider>
+    <mat-card-actions>
+    </mat-card-actions>
+  </div>
+
+  <div class="alert alert-light col-md-3 text-center" style="margin-top: 10px;">
+    <h5><strong>Agendas:</strong></h5>
+    <table class="table table-hover">
+      <tbody *ngFor="let agenda of Agendas">
+        <tr [routerLink]="['/agenda', agenda.Id]">
+          <td>{{agenda.Data | date}}</td>
+          <td>{{agenda.Temat}}</td>
+        </tr>
+        <tr id="agenda-{{agenda.Id}}"></tr>
+      </tbody>
+    </table>
+    <button class="btn center" (click)="addAgenda()">
+      <mat-icon>add_box</mat-icon>
+    </button>
+  </div>
+
+  <div class="alert alert-light col-md-3 text-center" style="margin-top: 10px; display: none" id="add_agenda">
+    <h5><strong>New Agenda:</strong></h5>
+    <table class="table table-hover">
+      <tr>
+        <td><input type="date" class="form-control" placeholder="Data"></td>
+        <td><input type="text" class="form-control" placeholder="Topic"></td>
+      </tr>
+    </table>
+    <button class="btn" (click)="cancelAddingAgenda()">
+      <mat-icon>cancel</mat-icon>
+    </button>
+    <button class="btn">
+      <mat-icon>check</mat-icon>
+    </button>
+  </div>
+</div>

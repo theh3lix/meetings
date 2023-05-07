@@ -1,0 +1,13 @@
+<div class="content" role="main">
+
+    <h1>Meetings</h1>
+  
+    <div class="card-container" *ngFor="let komitet of komitety">
+  
+      <button class="card card-small" [routerLink]="['/komitet', komitet.Id]" tabindex="0" (click)="setId(komitet.Id)">
+        <span>{{komitet.Name}}</span>
+      </button>
+    </div>
+  
+  </div>
+  
